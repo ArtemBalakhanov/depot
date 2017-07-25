@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-before_filter :authenticate_user!, :except => [:show, :index]
 before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 
@@ -27,6 +26,7 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
   # POST /products
   # POST /products.json
   def create
+    @product.user_id = current_user.id
     @product = Product.new(product_params)
 
     respond_to do |format|
