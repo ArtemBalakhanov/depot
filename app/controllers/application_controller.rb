@@ -10,7 +10,7 @@ protect_from_forgery with: :exception
 
 protected
 def configure_permitted_parameters
-devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit({ roles: [] }, :email, :password, :password_confirmation, :username) }
+devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit({ roles: [] }, :email, :password, :password_confirmation, :username, :name) }
 end
 #  protected
   #def configure_permitted_parameters
