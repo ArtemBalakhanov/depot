@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
-  has_many :products, :dependent => :destroy
+  has_many :ad, :dependent => :destroy
   validates_presence_of :name
   before_save :assign_role
 
   def assign_role
-    self.role = Role.find_by name: "Regular" if self.role.nil?
+    self.role = Role.find_by name: "Guest" if self.role.nil?
   end
 
   def admin?
@@ -17,10 +17,10 @@ class User < ApplicationRecord
   end
 
   def seller?
-    self.role.name == "Seller"
+    self.role.name == "User"
   end
 
   def regular?
-    self.role.name == "Regular"
+    self.role.name == "Guest"
   end
 end

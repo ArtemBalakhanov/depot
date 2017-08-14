@@ -1,7 +1,7 @@
 <h1>List of ads</h1>
 
 <table>
-<% @products.each do |product| %>
+<% @ads.each do |ad| %>
    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 
        <td>
@@ -10,19 +10,19 @@
 
 <td class="list_description">
     <dl>
-        <dt><%= product.title %></dt>
-        <dd><%= truncate(strip_tags(product.description),
+        <dt><%= ad.title %></dt>
+        <dd><%= truncate(strip_tags(ad.description),
             length: 80) %></dd>
     </dl>
   </td>
   <td class="list_actions">
-    <%= link_to 'Show', product %><br/>
-    <%= link_to 'Edit', edit_product_path(product) %><br/>
-    <%= link_to 'Destroy', product, method: :delete,
+    <%= link_to 'Show', ad %><br/>
+    <%= link_to 'Edit', edit_ad_path(ad) %><br/>
+    <%= link_to 'Destroy', ad, method: :delete,
                 data: { confirm: 'Are you sure?' } %>
   </td>
 </tr>
 <% end %>
 </table>
 <br />
-<%= link_to 'New ad', new_product_path %>
+<%= link_to 'New ad', new_ad_path %>

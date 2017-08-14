@@ -1,4 +1,4 @@
-class Product < ApplicationRecord
+class Ad < ApplicationRecord
   belongs_to :user
   belongs_to :topic
   validates :title, :description, :image_url, presence: true

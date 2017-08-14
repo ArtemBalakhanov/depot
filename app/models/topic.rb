@@ -1,3 +1,3 @@
 class Topic < ApplicationRecord
-  has_many :products
+  has_many :ad
 end

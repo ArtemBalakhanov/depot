@@ -4,18 +4,16 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :products
+  resources :ads
   resources :users
   resources :roles
-  resources :persons
-  resources :store
   resources :topics
 
   get 'users/index'
 
   authenticated :user do
-    root :to => 'products#index', as: :authenticated_root
+    root :to => 'ads#index', as: :authenticated_root
   end
-  root :to => 'products#index'
+  root :to => 'ads#index'
 
 end

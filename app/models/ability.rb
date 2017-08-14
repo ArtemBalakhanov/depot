@@ -4,19 +4,19 @@ class Ability
   def initialize(user)
     if user.admin?
       #can :manage, :all
-      can :read, Product
-      can :destroy, Product
-    elsif user.seller?
-      can :read, Product
-      can :create, Product
-      can :update, Product do |product|
-         product.try(:user) == user
+      can :read, Ad
+      can :destroy, Ad
+    elsif user.user?
+      can :read, Ad
+      can :create, Ad
+      can :update, Ad do |ad|
+         ad.try(:user) == user
      end
-      can :destroy, Product do |product|
-      product.try(:user) == user
+      can :destroy, Ad do |ad|
+      ad.try(:user) == user
      end
-    elsif user.regular?
-      can :read, Product
+   elsif user.guest?
+      can :read, Ad
  end
 
     #if user.admin?
