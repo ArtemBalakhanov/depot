@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814114252) do
+ActiveRecord::Schema.define(version: 20170821152606) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title"
@@ -50,18 +50,14 @@ ActiveRecord::Schema.define(version: 20170814114252) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name"
+    t.string   "role"
+    t.integer  "role_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "username"
-    t.string   "name"
-    t.string   "user_id"
-    t.integer  "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

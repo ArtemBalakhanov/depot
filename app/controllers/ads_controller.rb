@@ -21,12 +21,13 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /ads/1/edit
   def edit
+    @ad = Ad.find(params[:id])
   end
 
   # POST /ads
   # POST /ads.json
   def create
-    @ad.user_id = current_user.id
+    @ad = current_user.id
     @ad = Ad.new(ad_params)
 
     respond_to do |format|
