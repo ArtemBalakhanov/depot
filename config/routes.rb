@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   scope "/admin" do
     resources :users
@@ -8,8 +10,8 @@ Rails.application.routes.draw do
   resources :users
   resources :roles
   resources :topics
-
   get 'users/index'
+
 
   authenticated :user do
     root :to => 'ads#index', as: :authenticated_root
