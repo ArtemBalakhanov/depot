@@ -11,12 +11,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @joined_on = @user.created_at.to_formatted_s(:short)
-    if @user.current_sign_in_at
-      @last_login = @user.current_sign_in_at.to_formatted_s(:short)
-    else
-      @last_login = "never"
-    end
+    @user = User.find(params[:id])
+    #@joined_on = @user.created_at.to_formatted_s(:short)
+    #if @user.current_sign_in_at
+    #  @last_login = @user.current_sign_in_at.to_formatted_s(:short)
+    #else
+    #  @last_login = "never"
+    #end
   end
 
   # GET /users/new
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     #@user = User.new params[:user]
     respond_to do |format|
       #@user = User.new params[:user]
-      #@user = current_role.users.new(user_params)
+      @user = current_role.users.new(user_params)
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -83,7 +84,7 @@ end
       format.json { head :no_content }
     end
   end
-
+end
   private
     def needs_password?(user, params)
       params[:password].present?
@@ -93,5 +94,4 @@ end
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :role_id)
   end
-end
 end

@@ -1,4 +1,5 @@
 class AdsController < ApplicationController
+#load_and_authorize_resource
 before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
 
@@ -16,7 +17,8 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /ads/new
   def new
-    @ad = Ad.new
+    #@ad = Ad.new
+    @ad = Ad.new(params[:ad].permit(:title, :price, :description))
   end
 
   # GET /ads/1/edit
@@ -27,7 +29,7 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
   # POST /ads
   # POST /ads.json
   def create
-    @ad = current_user.id
+    #@ad = current_user.id
     @ad = Ad.new(ad_params)
 
     respond_to do |format|

@@ -1,4 +1,5 @@
 class Ad < ApplicationRecord
+  #protected_attributes :title, :image_url, :user_id, :topic_id
   belongs_to :user, optional: true
   belongs_to :topic, optional: true
   validates :title, :description, :image_url, presence: true #:topic_id, :user_id, presence: true
