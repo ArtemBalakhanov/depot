@@ -34,19 +34,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    #@user = User.new params[:user]
+    #@user = User.new(params[:user])
+    #@user = User.new
+    @user = User.new user_params[:user]
     respond_to do |format|
       #@user = User.new params[:user]
-      @user = current_role.users.new(user_params)
+      #@user = current_role.users.new(user_params)
+      #@user = current_user.role_id.new(user_params)
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
 
+    end
+end
+end
 
 
 
@@ -73,7 +77,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-end
+
 
   # DELETE /users/1
   # DELETE /users/1.json

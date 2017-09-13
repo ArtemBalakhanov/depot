@@ -17,8 +17,8 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /ads/new
   def new
-    #@ad = Ad.new
-    @ad = Ad.new(params[:ad].permit(:title, :price, :description))
+    @ad = Ad.new
+    #@ad = Ad.new(ad_params[:ad].permit(:title, :price, :description))
   end
 
   # GET /ads/1/edit
@@ -30,6 +30,7 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
   # POST /ads.json
   def create
     #@ad = current_user.id
+    @ad = current_user.ad.build(ad_params)
     @ad = Ad.new(ad_params)
 
     respond_to do |format|
@@ -75,6 +76,6 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:title, :description, :image_url, :price)
+      params.require(:ad).permit(:title, :description, :image_url, :price, :topic_id, :user_id)
     end
 end

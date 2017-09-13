@@ -11,6 +11,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= collection_select(:ad, :user_id, User.all, :id, :name, prompt: true) %>
+  </div>
 
   <div class="field">
     <%= f.label :topic_id %><br>

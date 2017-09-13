@@ -17,11 +17,11 @@ class User < ApplicationRecord
     self.role.name == "Admin"
   end
 
-  def seller?
+  def user?
     self.role.name == "User"
   end
 
-  def regular?
+  def guest?
     self.role.name == "Guest"
   end
 end
