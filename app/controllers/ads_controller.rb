@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-#load_and_authorize_resource
+load_and_authorize_resource
 before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
 
@@ -8,6 +8,8 @@ before_action :set_ad, only: [:show, :edit, :update, :destroy]
   # GET /ads.json
   def index
     @ads = Ad.all
+    @q = Ad.ransack(params[:q])
+    @events = @q.result(distinct: true)
   end
 
   # GET /ads/1

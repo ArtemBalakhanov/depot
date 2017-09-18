@@ -72,8 +72,6 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    enumerize (2.1.2)
-      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -230,7 +228,6 @@ DEPENDENCIES
   cancancan (~> 2.0)
   coffee-rails (~> 4.2)
   devise
-  enumerize
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -238,6 +235,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (= 5.0.4)
   rails_12factor (= 0.0.2)
+  ransack
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
